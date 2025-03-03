@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PCF-GEO-Report</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+{% if part != None %}
+    <body class="pcf-report-body">
+        <a href="{{ url_for('index') }}" class="home-icon" title="Zur Startseite">
+            <i class="fas fa-home"></i>
+        </a>
+        <main>
+            <div class="center-wrapper">
+                <div class="image-container">
+                    {% if image %}
+                    <img src="data:image/png;base64,{{ image.decode('utf-8') if image else '' }}" 
+                    alt="Part Visualization" 
+                    class="part-image"
+                    />
+                    {% endif %}
+                </div>
+            </div>
+            <div class="info-container">
+                <div class="info-box">
+                    <h3>Laser</h3>
+                    <p>{{ part.laser.machine_type_identifier}}, {{ part.laser.laser_power["value"]}} Watt</p>
+                </div>
+                <div class="info-box" onclick="showPopup()">
+                    <h3>PCF</h3>
+                    <p>{{part.pcf | round(3) }} kg CO<sub>2</sub>e</p>
+                </div>
+                <div class="info-box">
+                    <h3>Material</h3>
+                    <p>{{part.material.name}}</p>
+                </div>
+                <div class="info-box">
+                    <h3>Gewicht</h3>
+                    <p>{{part.weight | round(3)}} kg</p>
+                </div>
+                <div class="info-box">
+                    <h3>Stromverbrauch</h3>
+                    <p>{{part.energy_consumption| round(3)}} kWh</p>
+                </div>
+                <div class="info-box">
+                    <h3>Schneidgasverbrauch ({{part.cut_gas}})</h3>
+                    <p>{{part.gas_consumption| round(3)}} L</p>
+                </div>
+            </div>
+        </main>
+        <div class="overlay" id="overlay" onclick="closePopup()" style="display: none;"></div>
+        <div class="popup" id="popup" style="display: none;">
+            <h3>PCF Aufschlüsselung</h3>
+            <p><strong>Produktionsemissionen:</strong> {{ part.emission.production_emission | round(3) | string | replace('.', ',') }} kg CO<sub>2</sub>e</p>
+            <p>Stromverbrauch: {{ part.energy_co2_equivalent | round(3) | string | replace('.', ',') }} kg CO<sub>2</sub>e</p>
+            <p>Schneidgasverbrauch: {{ part.emission.gas_emission | round(3) | string | replace('.', ',') }} kg CO<sub>2</sub>e</p>
+            <p><strong>Materialemissionen:</strong> {{ part.emission.material_emission | round(3) | string | replace('.', ',') }} kg CO<sub>2</sub>e</p>
+            <p>Verschnitt der Tafel: {{ part.emission.sheet_scrap_emission | round(3) | string | replace('.', ',') }} kg CO<sub>2</sub>e</p>
+            <p>Material des Bauteils: {{ part.emission.part_raw_material_emission | round(3) | string | replace('.', ',') }} kg CO<sub>2</sub>e</p>
+            <p>Verschnitt des Bauteils: {{ part.emission.part_scrap_emission | round(3) | string | replace('.', ',') }} kg CO<sub>2</sub>e</p>            
+            <button class="close-btn" onclick="closePopup()">Schließen</button>
+        </div>
+        <script>
+            function showErrorPopup(errorMessage) {
+                if (errorMessage) {
+                    alert(errorMessage);
+                }
+            }
+            const errorMessage = "{{ error_message }}";
+            showErrorPopup(errorMessage);
+            function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+            }
+
+            function closePopup() {
+                document.getElementById('popup').style.display = 'none';
+                document.getElementById('overlay').style.display = 'none';
+            }
+        </script>
+        
+    </body>
+{% else %}
+<script>
+    window.location.href = "{{ url_for('index', error_message=error_message) }}";
+</script>
+{% endif %}
+</html>

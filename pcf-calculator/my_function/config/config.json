@@ -1,0 +1,14 @@
+{
+"UnloadTypeToExport": "All",
+"ExportAsBoostFormat": false,
+"ExportJsonPerPart": false,
+"LstToJson": false,
+"NcToJson": false,
+"SimplifySegments": false,
+"FetchPinPositions": true,
+"ParseApproachFlags": true,
+"SplitCurvesIntoInnerAndOuterCurves": true,
+"AddPartTypeIndexToBoostFormat": false,
+"JsonOutputTypeToUse": "AdditionalInfoPart",
+"ParserType": "GEO"
+}

@@ -1,0 +1,5 @@
+[project]
+name = "PCF-Calculator"
+version = 0.1.0
+author = "Marius Wieler"
+dependencies = ["requests","dataclasses","base64"]

@@ -1,0 +1,14 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "",
+    "REDIS_CACHE_HOST": "localhost",
+    "REDIS_CACHE_PORT": 6379,
+    "RP_CLIENT_SECRET":"6cj3gN85tIqXb6lKicD3vCQ_Stka",
+    "RP_ClIENT_ID":"OdlqA7m7URUO1Ezaoq99vVEojaMa",
+    "NASH_API_KEY":"f71bd44f-ecf5-41b3-b454-81934be04e24",
+    "PROXY": "http://srv01prox.corp.trumpf.com:80"
+  },
+  "ConnectionStrings": {}
+}

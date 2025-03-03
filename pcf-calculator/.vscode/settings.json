@@ -1,0 +1,39 @@
+{
+    "python.pythonDefaultInterpreterPath": ".envs/Scripts/python",
+    "python.analysis.extraPaths": ["app", ".envs"],
+    "files.exclude": {
+        ".git": true,
+        ".vscode": true,
+        ".env": false,
+        "**/*.pyc": true,
+        "**/__pycache__/": true,
+        "**/.ipynb_checkpoints": true,
+        "**/.mypy_cache": true,
+        "**/.pytest_cache": true,
+        "**/*.coverage": true,
+        "**/__init__.py": false,
+        "coverage.xml": true
+    },
+    "editor.rulers": [80],
+    "window.zoomLevel": 1,
+    "python.linting.enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.testing.pytestEnabled": true,
+    "cSpell.words": [
+        "Aluminium",
+        "Edelstahl",
+        "Kupfer",
+        "Sauerstoff",
+        "Sprungstahl",
+        "Stahl",
+        "Stickstoff"
+    ],
+    "azureFunctions.deploySubpath": ".",
+    "azureFunctions.scmDoBuildDuringDeployment": true,
+    "azureFunctions.pythonVenv": ".venv",
+    "azureFunctions.projectLanguage": "Python",
+    "azureFunctions.projectRuntime": "~4",
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.projectLanguageModel": 2
+}

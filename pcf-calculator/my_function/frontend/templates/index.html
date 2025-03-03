@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCF Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+</head>
+<body class="index-body">
+    <div class="upload-container">
+        <h1 class="index-h1">PCF Rechner</h1>
+        <fieldset class="fieldset">
+            <div class="characteristics-grid">
+                <div class="characteristic-row">
+                    <label for="material">Material:</label>
+                    <select id="material">
+                        <option value="">Bitte wählen...</option>
+                        <option value="Stahl">Stahl</option>
+                        <option value="Aluminium">Aluminium</option>
+                    </select>
+                </div>
+                <div class="characteristic-row">
+                    <label for="thickness">Materialdicke (mm):</label>
+                    <select id="thickness" multiple="multiple">
+                        <option value="" selected>Bitte wählen...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="1">7</option>
+                        <option value="2">8</option>
+                        <option value="3">9</option>
+                        <option value="4">10</option>
+                        <option value="5">11</option>
+                        <option value="6">12</option>
+                    </select>
+                </div>
+                <div class="characteristic-row">
+                    <label for="gas">Schneidgas:</label>
+                    <select id="gas">
+                        <option value="">Bitte wählen...</option>
+                        <option value="Stickstoff">Stickstoff</option>
+                        <!-- <option value="Sauerstoff">Sauerstoff</option> -->
+                    </select>
+                </div>
+                <div class="characteristic-row">
+                    <label for="laser">Lasermaschine:</label>
+                    <select id="laser" size="5">
+                        <option value="">Bitte wählen...</option>
+                        <option value="L76">L76</option>
+                        <option value="L95_3030">L95_3030</option>
+                        <!-- <option value="L95_3080">L95_3080</option>
+                        <option value="L95_3060">L95_3060</option>
+                        <option value="L95_3040">L95_3040</option>
+                        <option value="L94_1060">L94_1060</option>
+                        <option value="L81_3030">L81_3030</option>  -->
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <div class="upload-area">
+            <label for="file-upload">
+                <strong>Drag & Drop eine Datei hier oder <span style="color: #007BFF; text-decoration: underline;" id="click-here">klicke hier</span></strong>
+            </label>
+            <input type="file" id="file-upload" name="file">
+            <p id="file-name" style="margin-top: 10px; font-weight: bold; color: #555;"></p>
+        </div>
+        <button id="upload-button">Hochladen</button>
+        <div id="loading-indicator" style="display: none; text-align: center; margin-top: 20px;">
+            <div class="spinner"></div>
+            <p>Upload läuft... Bitte warten</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selects = document.querySelectorAll('select');
+    
+            selects.forEach(select => {
+                select.selectedIndex = -1; 
+            });
+    
+            $(document).ready(function() {
+                $('select').select2({
+                    placeholder: "Bitte wählen oder suchen...",
+                    allowClear: true
+                });
+            });
+        });
+    
+        function showErrorPopup(errorMessage) {
+            if (errorMessage) {
+                alert(errorMessage);
+            }
+        }
+    
+        const urlParams = new URLSearchParams(window.location.search);
+        const errorMessage = urlParams.get('error_message');
+        showErrorPopup(errorMessage);
+    </script>    
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
