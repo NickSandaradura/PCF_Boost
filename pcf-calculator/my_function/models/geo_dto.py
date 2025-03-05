@@ -1,18 +1,21 @@
 from dataclasses import dataclass, field
 from my_function.models.material_dto import MaterialDto
 from my_function.models.laser_dto import LaserDto
+from my_function.models.gas_dto import GasDto
 
 @dataclass(order=True)
 class GeoDto:
     name : str
     machine_definition :  LaserDto
     material : MaterialDto
-    cut_gas : str
+    cut_gas : GasDto
+    # Check wheater the values for Gasdto are the right one or if there is a need of 
+    #adjusting the params for an propper calculation
     geometry : dict 
     laser_cutting_options : dict 
 
 
-    def __init__(self, name, machine_definition, material, cut_gas="N2", content_base64 = ""):
+    def __init__(self, name, machine_definition, material, cut_gas, content_base64 = ""):
         self.name = name
         self.machine_definition = machine_definition
         self.material = material

@@ -26,7 +26,7 @@ class Base64Encoder:
     def encode_geo_file_to_base64(self, file_name: str, geo_dto:GeoDto):
         file_path = os.path.join(self.directory, file_name)
         encoded_string = Base64Encoder.encode_file_to_base64(file_path)
-        geo_dto.name = file_name
+        geo_dto.name = file_nameö
         geo_dto.geometry["content_base64"] = encoded_string
         return geo_dto
     

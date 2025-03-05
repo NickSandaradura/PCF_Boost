@@ -4,10 +4,15 @@ class PcfCalculatorInterface(ABC):
         "AlMg3": 7.48, 
         "1.0038": 0.55, 
         "Cu": 6.86, 
-        "CuZn": 5.69}
-    energy_emission_factors ={"N2":0.2,"Electricity":0.435,"O2":0.55}
-    
+        "CuZn": 5.69
+        }
 
+    energy_emission_factors = {
+    "N2": 0.2,
+    "Druckluft": 0.01,
+    "Electricity": 0.435,
+    "O2": 0.55
+}
 
 class GeoPcfCalculatorInterface(PcfCalculatorInterface):
     @abstractmethod

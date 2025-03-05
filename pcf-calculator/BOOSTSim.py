@@ -3,13 +3,17 @@ import json
 import os
 import redis
 
+from my_function.models.material_dto import MaterialDto
+
 DATEIPFAD = "pfad/zur/datei.geo"
 REDIS_HOST = "localhost"
 REDIS_PORT = 6379
 REDIS_KEY = "geo_file_base64"
 
-material_dicke = "2mm"
-material_art = "Stahl"
+#Änderung_ template Werte gegen tatsächliche Werte aus Geo ersetzt 
+material_dicke = MaterialDto.thickness
+material_art = MaterialDto.foil_type 
+
 
 def datei_zu_base64(pfad):
     with open(pfad, "rb") as datei:

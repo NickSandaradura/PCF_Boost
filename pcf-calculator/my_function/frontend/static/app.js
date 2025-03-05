@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     let gas_name_id={
         "Stickstoff": "N2",
-        "Sauerstoff": "O2"
+        "Sauerstoff": "O2",
+        "Druckluft":"Druckluft"
 
     };
     $('#material').on('select2:select', function (event) {
