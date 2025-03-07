@@ -24,3 +24,7 @@ class GeoDto:
         self.laser_cutting_options = {"cool_line": False, 
         "fly_line": False,"bright_line":False,"performance_package":False,"high_speed": False,
         "high_speed_eco":False,"high_focus_cutting": False,"bevel_cut": False}
+
+
+
+    

@@ -1,11 +1,11 @@
 from dataclasses import dataclass
+import sys
 
 @dataclass
 class GasDto:
     gas_type: str 
 
-    def __init__(self, cut_gas: str = "N2"):
-
+    def __init__(self, cut_gas: str = ""):
         self.gas_type = cut_gas
 
     def map_gas(self, gas_type: str) -> str:
@@ -14,4 +14,7 @@ class GasDto:
             "O2": "Sauerstoff",
             "Druckluft": "Druckluft",
         }
-        return gas_variant.get(gas_type, "Unknown Gas")
+        if gas_type not in gas_variant:
+            raise ValueError("Unknown Gas")
+        sys.exit(1)
+        return gas_variant[gas_type]
