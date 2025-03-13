@@ -13,7 +13,7 @@
 <body class="index-body">
     <div class="upload-container">
         <div class="logo-container">
-            <a href="https://www.trumpf.com/" target="_blank">
+            <a href="https://www.trumpf.com/" target="_blank" onclick="return confirmRedirect();">
             <img src="{{ url_for('static', filename='images/Trumpflogo.png') }}" alt="Logo" class="logo">
             </a>	
         </div>	
@@ -149,6 +149,9 @@
         }
     });
 });
+function confirmRedirect() {
+    return confirm("You are about to be redirected to the TRUMPF website. Do you want to proceed?");
+}
 </script>
     </script>    
     <script src="{{ url_for('static', filename='app.js') }}"></script>

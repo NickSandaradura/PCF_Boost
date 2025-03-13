@@ -58,18 +58,8 @@ select {
     border-radius: 4px;
     width: 100%; /* Passt sich an die Breite der Spalte an */
 }
-.upload-area {
-    border: 2px dashed #cccccc;
-    padding: 20px;
-    text-align: center;
-    border-radius: 6px;
-    background: #fafafa;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-.upload-area:hover {
-    background: #f0f0f0;
-}
+
+
 .upload-area input[type="file"] {
     display: none;
 }
@@ -223,3 +213,46 @@ header {
     min-width: 100px;
     font-family: "Courier New", Courier, monospace;
   }
+
+  
+#drop-zone {
+    border: 3px dashed #888; /* explizit definierter Rand */
+    border-radius: 12px;
+    padding: 60px 20px;
+    background-color: #fff;
+    color: #666;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+#drop-zone.dragover {
+    border-color: #000000; /* Randfarbe bei Dragover */
+    background-color: #ffffff;
+    color: #3b82f6;
+}
+
+#drop-zone:hover {
+    background-color: #ddecff;
+}
+
+.text
+{
+    text-align: center;
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* aligns items from left to right */
+    gap: 10px;                   /* space between h1 and logo */
+}
+
+.logo {
+    height: 50px; /* Adjust this as necessary */
+}
+
+.index-h1 {
+    font-size: 2rem;
+    margin: 0;
+    padding-bottom: 5%;
+}
